@@ -33,10 +33,33 @@
   }
 }
 
-.card {
-  padding: 2em;
+.graph-container {
+  min-width: 1000px;
+  background-color: '#1E1E3F' !important;
 }
 
-.read-the-docs {
-  color: #888;
+.container-heading {
+  background: '#1E1E3F';
+  color: '#FFFFFF';
+}
+
+.container-heading h2 {
+  text-align: space-around;
+}
+
+.graph-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.weeks, .month {
+  display: flex;
+  align-items: center;
+}
+
+.weeks button {
+  margin: 0 5px; /* Add some space around the buttons */
 }

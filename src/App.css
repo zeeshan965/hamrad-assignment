@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('/images/background.jpeg');
+  background-size: cover;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -41,6 +49,7 @@
 .container-heading {
   background: '#1E1E3F';
   color: '#FFFFFF';
+  text-align: left;
 }
 
 .container-heading h2 {

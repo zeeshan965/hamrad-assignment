@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Header from './components/Header';
+import DetailsTable from './components/DetailsTable';
+import SearchInput from './components/SearchInput';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  // Mock Data for Details
+  const details = {
+    // name: 'James R Cribbs Jr',
+    // callsign: 'KN4NEH',
+    // class: 'Amateur Extra',
+    // status: 'Active',
+    // grid: 'EM73uw',
+    // expires: '06/15/2028',
+    // address: '2983 Sumac Dr, Atlanta, GA 30360, United States',
+    // fccUrl: 'http://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=4056805',
+    // xmlUrl: 'https://hamdb.org/KN4NEH/xml',
+    // jsonUrl: 'https://hamdb.org/KN4NEH/json',
+    // csvUrl: 'https://hamdb.org/KN4NEH/csv',
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ margin: '0px auto' }}>
+      <Navbar />
+      <Header />
+      <div className="main-content">
+        {details.length > 0 && (
+            <center>
+              <DetailsTable details={details} />
+            </center>
+          )}
+        <br />
+        <SearchInput />
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;

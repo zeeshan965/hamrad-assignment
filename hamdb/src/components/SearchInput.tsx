@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-const SearchInput = () => {
+const SearchInput = ({ onSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSearch = () => {
-    if (searchValue.trim()) {
-      window.location.href = `http://hamdb.org/${searchValue}`;
-    }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value.trim());
+    onSearchChange(value.trim());
   };
 
   return (
@@ -15,15 +15,13 @@ const SearchInput = () => {
         type="text"
         placeholder="AU, CA, CZ, DE, OR US CALLSIGN"
         value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={handleInputChange}
         onKeyDown={(e) => {
           if (e.key === 'Enter') handleSearch();
         }}
         className="field"
         style={{ marginBottom: '10px' }}
       />
-      <br />
-      <button className="btn btn-primary" onClick={handleSearch}>Submit</button>
     </div>
   );
 };

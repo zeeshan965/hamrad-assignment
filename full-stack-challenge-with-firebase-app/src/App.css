@@ -113,6 +113,7 @@ body {
 }
 .graph-spacing{
   padding: 20px;
+  height: 45vh;
 }
 
 .loader-section{
@@ -120,4 +121,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 45vh;
+
 }

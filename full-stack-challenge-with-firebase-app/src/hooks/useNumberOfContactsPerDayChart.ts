@@ -9,6 +9,7 @@ export const useNumberOfContactsPerDayChart = (year: number): LineChartResponse 
     const [currentMonth, setCurrentMonth] = useState<string>("February");
     const [categoriesLabels, setCategoryLabels] = useState<string[]>([]);
     const [graphWeeklyData, setGraphWeeklyData] = useState<Record<number, number[]>>({});
+    const [isLoader,setIsLoader] = useState<boolean>(false);
 
     const currentWeek = graphWeeklyData[currentWeekIndex] || [];
 
@@ -43,6 +44,7 @@ export const useNumberOfContactsPerDayChart = (year: number): LineChartResponse 
 
     const fetchLogbookContact = async () => {
         try {
+            setIsLoader(true);
             const {start, end} = getWeekDateRange(year, currentWeekIndex);
 
             const logbookCollection = collection(db, "LogBookContact");
@@ -97,6 +99,8 @@ export const useNumberOfContactsPerDayChart = (year: number): LineChartResponse 
             }));
         } catch (error) {
             console.error("Error fetching LogBookContact data:", error);
+        } finally {
+            setIsLoader(false);
         }
     };
 
@@ -111,5 +115,6 @@ export const useNumberOfContactsPerDayChart = (year: number): LineChartResponse 
         currentWeek,
         previousWeek,
         nextWeek,
+        isLoader
     };
 };

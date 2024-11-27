@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Play', sans-serif;
   background: url('/images/background.jpeg');
   background-size: cover;
 }
@@ -67,8 +67,57 @@ body {
 .weeks, .month {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .weeks button {
   margin: 0 5px; /* Add some space around the buttons */
+}
+
+.graph-section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-inline: 20px;
+  padding-top: 20px;
+}
+.graph-section-title {
+  color: white;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  padding-left: 24px;
+  font-family: 'Play', sans-serif;
+}
+.horizontal-line {
+  border: 1px solid #86849e;
+}
+
+.graph-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+  padding-top: 20px;
+}
+.graph-action-button {
+  cursor: pointer;
+}
+
+.graph-current-month {
+  color: #FFFFFF;
+  width: 100px;
+  font-family: 'Play', sans-serif;
+}
+.graph-spacing{
+  padding: 20px;
+}
+
+.loader-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -32,17 +32,16 @@ const saveProgress = (progress) => {
 
 // Connect to MySQL
 const connectToDatabase = async () => {
-  return await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "fcc_amateur",
+  return mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "password",
+      database: "fcc_amateur",
   });
 };
 
 // Fetch data from MySQL with limit and offset
 const fetchData = async (connection, limit, offset) => {
-  console.log(`Fetching data with LIMIT: ${limit}, OFFSET: ${offset}`); // Debug log
   if (typeof limit !== "number" || typeof offset !== "number") {
     throw new Error("LIMIT and OFFSET must be numbers");
   }
@@ -95,11 +94,10 @@ const importToFirestore = async (data) => {
 const run = async () => {
   try {
     const connection = await connectToDatabase();
-    console.log("Connected to MySQL");
+
 
     const progress = loadProgress();
-    console.log(`Resuming from offset: ${progress.offset}`);
-    console.log(`Writes today so far: ${progress.writesToday}`);
+
 
     while (progress.writesToday <= MAX_WRITES_PER_DAY) {
       // Fetch data in chunks
@@ -113,7 +111,6 @@ const run = async () => {
 
       // Import to Firestore
       await importToFirestore(transformedData);
-      console.log(`Imported ${rows.length} records from offset ${progress.offset}`);
 
       // Update progress
       progress.offset += rows.length;
@@ -122,12 +119,11 @@ const run = async () => {
 
       // Stop when daily write limit is reached
       if (progress.writesToday >= MAX_WRITES_PER_DAY) {
-        console.log(`Reached daily write limit of ${MAX_WRITES_PER_DAY}. Resuming tomorrow.`);
+
         break;
       }
     }
 
-    console.log("Data import complete for today.");
   } catch (error) {
     console.error("Error during import:", error);
   }

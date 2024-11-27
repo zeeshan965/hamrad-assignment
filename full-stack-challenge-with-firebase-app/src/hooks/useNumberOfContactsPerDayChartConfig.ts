@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import {useMemo} from "react";
 
 interface ChartConfigProps {
   categoriesLabels: string[];
@@ -9,13 +9,13 @@ export const useNumberOfContactsPerDayChartConfig = ({
   categoriesLabels,
   currentWeek,
 }: ChartConfigProps) => {
-  const chartOptions = useMemo(() => ({
+  return useMemo(() => ({
     chart: {
       type: "line",
       backgroundColor: "#1E1E3F",
     },
     title: {
-      text: "<div style='margin-bottom: 2em;'>Number of Contacts Per Day</div>",
+      text: "",
       align: "left",
       margin: 20,
       useHTML: true,
@@ -70,6 +70,4 @@ export const useNumberOfContactsPerDayChartConfig = ({
       ],
     },
   }), [categoriesLabels, currentWeek]);
-
-  return chartOptions;
 };

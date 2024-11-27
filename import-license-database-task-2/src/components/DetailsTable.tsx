@@ -1,11 +1,17 @@
-import React from 'react';
+import {Details} from "../hooks/useSearchRecord.ts";
+interface DetailsTableProps {
+  details: Details;
+}
 
-const DetailsTable = ({ details }) => (
+
+const DetailsTable: React.FC<DetailsTableProps> = ({ details }) =>{
+    return(
+
   <table className="table table-striped table-hover">
     <tbody>
       <tr>
         <td>Name:</td>
-        <td>{details.name}</td>
+        <td>{details.full_name}</td>
       </tr>
       <tr>
         <td>Callsign:</td>
@@ -29,7 +35,7 @@ const DetailsTable = ({ details }) => (
       </tr>
       <tr>
         <td>Address:</td>
-        <td>{details.address}</td>
+        <td>{details.address.state +', '+ details.address.city}</td>
       </tr>
       <tr>
         <td>FCC ULS:</td>
@@ -46,7 +52,7 @@ const DetailsTable = ({ details }) => (
         </td>
       </tr>
     </tbody>
-  </table>
-);
+  </table>)}
+
 
 export default DetailsTable;

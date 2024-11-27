@@ -5,4 +5,5 @@ export interface LineChartResponse {
     currentWeek: number[];
     previousWeek: () => void;
     nextWeek: () => void;
+    isLoader: boolean;
 }

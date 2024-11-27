@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 
-const SearchInput = ({ onSearchChange }) => {
-  const [searchValue, setSearchValue] = useState('');
+interface SearchInputProps {
+    onSearchChange: (value: string) => void; // Define the type for the callback prop
+}
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchValue(value.trim());
-    onSearchChange(value.trim());
-  };
+const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
+    const [searchValue, setSearchValue] = useState<string>('');
 
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <input
-        type="text"
-        placeholder="AU, CA, CZ, DE, OR US CALLSIGN"
-        value={searchValue}
-        onChange={handleInputChange}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') handleSearch();
-        }}
-        className="field"
-        style={{ marginBottom: '10px' }}
-      />
-    </div>
-  );
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchValue(value.trim());
+        onSearchChange(value.trim());
+    };
+
+    return (
+        <div style={{ textAlign: 'center' }}>
+            <input
+                type="text"
+                placeholder="AU, CA, CZ, DE, OR US CALLSIGN"
+                value={searchValue}
+                onChange={handleInputChange}
+                className="field"
+                style={{ marginBottom: '10px' }}
+            />
+        </div>
+    );
 };
 
 export default SearchInput;

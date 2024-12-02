@@ -3,6 +3,20 @@ import mysql from "mysql2/promise";
 import fs from "fs";
 import serviceAccount from "./src/config/contactsperday-firebase-adminsdk-jqa9i-4bd9901656.json" assert { type: "json" };
 
+
+const serviceAccount = {
+    type: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_TYPE,
+    project_id: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_PROJECT_ID,
+    private_key_id: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY_ID,
+    private_key: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'), // Handle line breaks
+    client_email: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_CLIENT_EMAIL,
+    client_id: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_CLIENT_ID,
+    auth_uri: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_AUTH_URI,
+    token_uri: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_TOKEN_URI,
+    auth_provider_x509_cert_url: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_AUTH_PROVIDER_CERT_URL,
+    client_x509_cert_url: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_CLIENT_CERT_URL,
+    universe_domain: import.meta.env.VITE_FIREBASE_SERVICE_ACCOUNT_UNIVERSE_DOMAIN,
+};
 // Initialize Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

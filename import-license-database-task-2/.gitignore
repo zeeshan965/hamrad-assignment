@@ -26,3 +26,5 @@ src/config/firebase.ts
 *.njsproj
 *.sln
 *.sw?
+.vercel
+.env
